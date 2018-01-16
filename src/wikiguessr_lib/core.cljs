@@ -1,9 +1,6 @@
 (ns wikiguessr-lib.core
-  (:require [clojure.browser.repl :as repl]))
+  (:require [ajax.core :refer [GET]]))
 
-;; (defonce conn
-;;   (repl/connect "http://localhost:9000/repl"))
 
-(enable-console-print!)
-
-(println "Hello world!")
+(defn ^:export get-wiki []
+  (GET "https://en.wikipedia.org/w/api.php?action=query&format=json&list=random&rnnamespace=0&rnlimit=1&origin=*"))
